@@ -23,6 +23,6 @@ namespace ApiTimeJogador_LuxOne.Models
         public int TimeID { get; set; }
 
         [JsonIgnore]
-        public IList<Time> Time { get; set; }
+        public Time Time { get; set; }
     }
 }
