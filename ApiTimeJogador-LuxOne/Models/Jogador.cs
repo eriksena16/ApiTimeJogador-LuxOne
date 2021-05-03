@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace ApiTimeJogador_LuxOne.Models
 {
@@ -19,6 +20,9 @@ namespace ApiTimeJogador_LuxOne.Models
         public int Idade { get; set; }
 
         [Required]
-        public Time TimeID { get; set; }
+        public int TimeID { get; set; }
+
+        [JsonIgnore]
+        public IList<Time> Time { get; set; }
     }
 }

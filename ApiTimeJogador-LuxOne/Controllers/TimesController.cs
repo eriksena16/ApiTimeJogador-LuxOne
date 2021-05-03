@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApiTimeJogador_LuxOne.Data;
 using ApiTimeJogador_LuxOne.Models;
+using ApiTimeJogador_LuxOne.Models.Validacao;
+using FluentValidation;
+
 
 namespace ApiTimeJogador_LuxOne.Controllers
 {
@@ -15,6 +18,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
     public class TimesController : ControllerBase
     {
         private readonly APIcontext _context;
+        private TimeValidator validator = new TimeValidator();
 
         public TimesController(APIcontext context)
         {
@@ -48,6 +52,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [HttpPost]
         public async Task<ActionResult<Time>> PostTime(Time time)
         {
+            validator.ValidateAndThrow(time);
             _context.Times.Add(time);
             await _context.SaveChangesAsync();
 
