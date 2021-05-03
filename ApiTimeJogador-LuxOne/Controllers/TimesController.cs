@@ -9,34 +9,39 @@ using ApiTimeJogador_LuxOne.Data;
 using ApiTimeJogador_LuxOne.Models;
 using ApiTimeJogador_LuxOne.Models.Validacao;
 using FluentValidation;
-
+using ApiTimeJogador_LuxOne.Services;
 
 namespace ApiTimeJogador_LuxOne.Controllers
 {
-    [Route("times")]
+    [Route("/api/[controller]/[action]")]
     [ApiController]
     public class TimesController : ControllerBase
     {
-        private readonly APIcontext _context;
+        private readonly ITimesService _timesService;
+        
         private TimeValidator validator = new TimeValidator();
 
-        public TimesController(APIcontext context)
+        public TimesController(APIcontext context, ITimesService timesService)
         {
-            _context = context;
+            
+            _timesService = timesService;
         }
 
         // GET: api/Times
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Time>>> GetTimes()
         {
-            return await _context.Times.ToListAsync();
+         var times =  await _timesService.Get();
+            return Ok(times);
+           
         }
 
         // GET: api/Times/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Time>> GetTime(int id)
         {
-            var time = await _context.Times.FindAsync(id);
+            var time = await _timesService.GetID(id);
+            
 
             if (time == null)
             {
@@ -53,16 +58,15 @@ namespace ApiTimeJogador_LuxOne.Controllers
         public async Task<ActionResult<Time>> PostTime(Time time)
         {
             validator.ValidateAndThrow(time);
-            _context.Times.Add(time);
-            await _context.SaveChangesAsync();
+           await _timesService.Salvar(time);
 
             return CreatedAtAction("GetTime", new { id = time.TimeID }, time);
         }
 
 
-        private bool TimeExists(int id)
+       /* private bool TimeExists(int id)
         {
             return _context.Times.Any(e => e.TimeID == id);
-        }
+        }*/
     }
 }

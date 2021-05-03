@@ -8,6 +8,8 @@ namespace ApiTimeJogador_LuxOne.Services
 {
    public interface ITimesService
     {
-        Task<IEnumerable<Time>> ToListAsync();
+        Task<IEnumerable<Time>> Get();
+        Task<Time> GetID(int id);
+        Task<Time> Salvar(Time time);
     }
 }

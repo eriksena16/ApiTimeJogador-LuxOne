@@ -10,14 +10,11 @@ namespace ApiTimeJogador_LuxOne.Models
     public class Time
     {
         public int TimeID { get; set; }
-
   
         public string Nome { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime DataInclusao { get; set; }
-
-        public decimal Media = 0;
 
         ICollection<Jogador> Jogadores { get; set; }
     }

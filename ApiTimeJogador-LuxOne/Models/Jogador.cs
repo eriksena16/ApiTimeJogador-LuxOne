@@ -12,14 +12,12 @@ namespace ApiTimeJogador_LuxOne.Models
     {
         public int JogadorID { get; set; }
 
-        [Required]
-        [StringLength(20)]
+        
         public string NomeCompleto { get; set; }
 
-        [Required]
         public int Idade { get; set; }
 
-        [Required]
+        
         public int TimeID { get; set; }
 
         [JsonIgnore]

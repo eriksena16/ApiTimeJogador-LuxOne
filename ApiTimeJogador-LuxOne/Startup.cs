@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using ApiTimeJogador_LuxOne.Data;
+using ApiTimeJogador_LuxOne.Services;
+
 namespace ApiTimeJogador_LuxOne
 {
     public class Startup
@@ -20,6 +22,7 @@ namespace ApiTimeJogador_LuxOne
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITimesService,TimesServices >();
             services.AddDbContext<APIcontext>(opt => opt.UseInMemoryDatabase("TimeJogador"));
             services.AddControllers();
             services.AddSwaggerGen(c =>
