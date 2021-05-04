@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiTimeJogador_LuxOne.Iterfaces;
 
 namespace ApiTimeJogador_LuxOne.Services
 {
@@ -34,6 +35,11 @@ namespace ApiTimeJogador_LuxOne.Services
             await _context.SaveChangesAsync();
             return await this.GetID(time.TimeID);
             
+        }
+
+         private bool TimeExists(int id)
+        {
+            return _context.Times.Any(e => e.TimeID == id);
         }
     }
 }

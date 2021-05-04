@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ApiTimeJogador_LuxOne.Data;
-using FluentValidation;
+﻿using ApiTimeJogador_LuxOne.Iterfaces;
 using ApiTimeJogador_LuxOne.Models;
 using ApiTimeJogador_LuxOne.Models.Validacao;
-using ApiTimeJogador_LuxOne.Services;
+using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ApiTimeJogador_LuxOne.Controllers
 {
@@ -58,11 +53,5 @@ namespace ApiTimeJogador_LuxOne.Controllers
             return CreatedAtAction("GetID", new { id = jogador.JogadorID }, jogador);
         }
 
-        
-
-       /* private bool JogadorExists(int id)
-        {
-            return _context.Jogadores.Any(e => e.JogadorID == id);
-        }*/
     }
 }

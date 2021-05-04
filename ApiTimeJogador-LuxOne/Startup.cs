@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using ApiTimeJogador_LuxOne.Data;
 using ApiTimeJogador_LuxOne.Services;
+using ApiTimeJogador_LuxOne.Iterfaces;
 
 namespace ApiTimeJogador_LuxOne
 {

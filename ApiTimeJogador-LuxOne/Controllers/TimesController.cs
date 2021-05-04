@@ -9,7 +9,7 @@ using ApiTimeJogador_LuxOne.Data;
 using ApiTimeJogador_LuxOne.Models;
 using ApiTimeJogador_LuxOne.Models.Validacao;
 using FluentValidation;
-using ApiTimeJogador_LuxOne.Services;
+using ApiTimeJogador_LuxOne.Iterfaces;
 
 namespace ApiTimeJogador_LuxOne.Controllers
 {
@@ -27,7 +27,6 @@ namespace ApiTimeJogador_LuxOne.Controllers
             _timesService = timesService;
         }
 
-        // GET: api/Times
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Time>>> Get()
         {
@@ -36,7 +35,6 @@ namespace ApiTimeJogador_LuxOne.Controllers
            
         }
 
-        // GET: api/Times/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Time>> GetID(int id)
         {
@@ -52,8 +50,6 @@ namespace ApiTimeJogador_LuxOne.Controllers
         }
 
 
-        // POST: api/Times
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Time>> Salvar(Time time)
         {
@@ -64,9 +60,6 @@ namespace ApiTimeJogador_LuxOne.Controllers
         }
 
 
-       /* private bool TimeExists(int id)
-        {
-            return _context.Times.Any(e => e.TimeID == id);
-        }*/
+       
     }
 }

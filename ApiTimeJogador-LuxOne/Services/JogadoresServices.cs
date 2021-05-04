@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApiTimeJogador_LuxOne.Data;
 using Microsoft.EntityFrameworkCore;
+using ApiTimeJogador_LuxOne.Iterfaces;
 
 namespace ApiTimeJogador_LuxOne.Services
 {
@@ -31,6 +32,11 @@ namespace ApiTimeJogador_LuxOne.Services
             _context.Jogadores.Add(jogador);
             await _context.SaveChangesAsync();
             return await this.GetID(jogador.JogadorID);
+        }
+
+         private bool JogadorExists(int id)
+        {
+            return _context.Jogadores.Any(e => e.JogadorID == id);
         }
     }
 }
