@@ -27,6 +27,14 @@ namespace ApiTimeJogador_LuxOne.Services
             return jogador;
         }
 
+        /*public async Task<Jogador> GetIdade(int idade)
+        {
+
+            var jogador =from j in _context.Jogadores where j.Idade == idade select j;
+            
+            return  jogador;
+        }*/
+
         public async Task<Jogador> Salvar(Jogador jogador)
         {
             _context.Jogadores.Add(jogador);

@@ -24,7 +24,7 @@ namespace ApiTimeJogador_LuxOne.Services
 
         public async Task<Time> GetID( int id)
         {
-            var time = await _context.Times.Include(j => j.Jogadores).AsNoTracking().ToListAsync();
+            var time = _context.Times.Include(_ => _.Jogadores).FirstOrDefault(_ => _.TimeID == id);
             return time;
         }
 

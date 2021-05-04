@@ -12,6 +12,7 @@ namespace ApiTimeJogador_LuxOne.Models
 
         public int TimeID { get; set; }
 
-        public Time Time { get; set; }
+        [JsonIgnore]
+        public virtual Time Time { get; set; }
     }
 }
