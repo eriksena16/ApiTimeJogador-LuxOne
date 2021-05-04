@@ -24,7 +24,7 @@ namespace ApiTimeJogador_LuxOne.Services
 
         public async Task<Time> GetID( int id)
         {
-            var time = await _context.Times.FindAsync(id);
+            var time = await _context.Times.Include(j => j.Jogadores).AsNoTracking().ToListAsync();
             return time;
         }
 
@@ -37,7 +37,7 @@ namespace ApiTimeJogador_LuxOne.Services
             
         }
 
-        public async Task<Double>CalcularMediaIdade(int id)
+        public async Task<double>CalcularMediaIdade(int id)
         {
 
             var time = await GetID(id);
