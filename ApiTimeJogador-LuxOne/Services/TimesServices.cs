@@ -37,6 +37,15 @@ namespace ApiTimeJogador_LuxOne.Services
             
         }
 
+        public async Task<Double>CalcularMediaIdade(int id)
+        {
+
+            var time = await GetID(id);
+            var mediaIdade = time.Jogadores.Average(_ => _.Idade);
+            return mediaIdade;
+            
+        }
+
          private bool TimeExists(int id)
         {
             return _context.Times.Any(e => e.TimeID == id);

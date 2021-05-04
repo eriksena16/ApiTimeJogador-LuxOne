@@ -59,7 +59,12 @@ namespace ApiTimeJogador_LuxOne.Controllers
             return CreatedAtAction("Get", new { id = time.TimeID }, time);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Double>> CalcularMediaIdade(int id)
+        {
+            var media = await _timesService.CalcularMediaIdade(id);
+            return Ok(media) ;
+        }
 
-       
     }
 }

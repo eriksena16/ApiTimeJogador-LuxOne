@@ -13,6 +13,6 @@ namespace ApiTimeJogador_LuxOne.Models
         [DataType(DataType.Date)]
         public DateTime DataInclusao { get; set; }
 
-        ICollection<Jogador> Jogadores { get; set; }
+       public ICollection<Jogador> Jogadores { get; set; }
     }
 }

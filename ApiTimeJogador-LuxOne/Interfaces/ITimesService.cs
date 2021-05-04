@@ -11,6 +11,8 @@ namespace ApiTimeJogador_LuxOne.Iterfaces
         Task<IEnumerable<Time>>Get();
         Task<Time>GetID(int id);
         Task<Time>Salvar(Time time);
-       
+        Task<Double> CalcularMediaIdade(int id);
+
+
     }
 }
