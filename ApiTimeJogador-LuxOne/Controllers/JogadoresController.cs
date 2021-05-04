@@ -6,33 +6,38 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ApiTimeJogador_LuxOne.Data;
+using FluentValidation;
 using ApiTimeJogador_LuxOne.Models;
+using ApiTimeJogador_LuxOne.Models.Validacao;
+using ApiTimeJogador_LuxOne.Services;
 
 namespace ApiTimeJogador_LuxOne.Controllers
 {
-    [Route("jogadores")]
+    [Route("/api/[controller]/[action]")]
     [ApiController]
     public class JogadoresController : ControllerBase
     {
-        private readonly APIcontext _context;
+        private readonly IJogadoresService _jogadoresService;
+        private readonly JogadorValidator validator = new JogadorValidator();
 
-        public JogadoresController(APIcontext context)
+        public JogadoresController(IJogadoresService jogadoresService)
         {
-            _context = context;
+            _jogadoresService = jogadoresService;
         }
 
         // GET: api/Jogadores
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Jogador>>> GetJogadores()
+        public async Task<ActionResult<IEnumerable<Jogador>>> Get()
         {
-            return await _context.Jogadores.ToListAsync();
+            var jogadores = await _jogadoresService.Get();
+            return Ok(jogadores);
         }
 
         // GET: api/Jogadores/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Jogador>> GetJogador(int id)
+        public async Task<ActionResult<Jogador>> GetID(int id)
         {
-            var jogador = await _context.Jogadores.FindAsync(id);
+            var jogador = await _jogadoresService.GetID(id);
 
             if (jogador == null)
             {
@@ -42,67 +47,22 @@ namespace ApiTimeJogador_LuxOne.Controllers
             return jogador;
         }
 
-        // PUT: api/Jogadores/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPut("{id}")]
-        public async Task<IActionResult> PutJogador(int id, Jogador jogador)
-        {
-            if (id != jogador.JogadorID)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(jogador).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JogadorExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }*/
-
-        // POST: api/Jogadores
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+  
         [HttpPost]
-        public async Task<ActionResult<Jogador>> PostJogador(Jogador jogador)
+        public async Task<ActionResult<Jogador>> Salvar(Jogador jogador)
         {
-            _context.Jogadores.Add(jogador);
-            await _context.SaveChangesAsync();
+            validator.ValidateAndThrow(jogador);
+            await _jogadoresService.Salvar(jogador);
+            
 
-            return CreatedAtAction("GetJogador", new { id = jogador.JogadorID }, jogador);
+            return CreatedAtAction("GetID", new { id = jogador.JogadorID }, jogador);
         }
 
-        // DELETE: api/Jogadores/5
-       /* [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteJogador(int id)
-        {
-            var jogador = await _context.Jogadores.FindAsync(id);
-            if (jogador == null)
-            {
-                return NotFound();
-            }
+        
 
-            _context.Jogadores.Remove(jogador);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }*/
-
-        private bool JogadorExists(int id)
+       /* private bool JogadorExists(int id)
         {
             return _context.Jogadores.Any(e => e.JogadorID == id);
-        }
+        }*/
     }
 }

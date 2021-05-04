@@ -23,6 +23,7 @@ namespace ApiTimeJogador_LuxOne
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ITimesService,TimesServices >();
+            services.AddScoped<IJogadoresService, JogadoresServices>();
             services.AddDbContext<APIcontext>(opt => opt.UseInMemoryDatabase("TimeJogador"));
             services.AddControllers();
             services.AddSwaggerGen(c =>

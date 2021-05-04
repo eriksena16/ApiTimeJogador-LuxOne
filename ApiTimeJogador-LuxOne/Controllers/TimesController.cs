@@ -19,9 +19,9 @@ namespace ApiTimeJogador_LuxOne.Controllers
     {
         private readonly ITimesService _timesService;
         
-        private TimeValidator validator = new TimeValidator();
+        private readonly TimeValidator validator = new TimeValidator();
 
-        public TimesController(APIcontext context, ITimesService timesService)
+        public TimesController(ITimesService timesService)
         {
             
             _timesService = timesService;
@@ -29,7 +29,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
 
         // GET: api/Times
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Time>>> GetTimes()
+        public async Task<ActionResult<IEnumerable<Time>>> Get()
         {
          var times =  await _timesService.Get();
             return Ok(times);
@@ -38,7 +38,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
 
         // GET: api/Times/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Time>> GetTime(int id)
+        public async Task<ActionResult<Time>> GetID(int id)
         {
             var time = await _timesService.GetID(id);
             
@@ -55,12 +55,12 @@ namespace ApiTimeJogador_LuxOne.Controllers
         // POST: api/Times
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Time>> PostTime(Time time)
+        public async Task<ActionResult<Time>> Salvar(Time time)
         {
             validator.ValidateAndThrow(time);
            await _timesService.Salvar(time);
 
-            return CreatedAtAction("GetTime", new { id = time.TimeID }, time);
+            return CreatedAtAction("Get", new { id = time.TimeID }, time);
         }
 
 
