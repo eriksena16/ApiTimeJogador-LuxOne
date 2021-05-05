@@ -26,7 +26,7 @@ namespace ApiTimeJogador_LuxOne.Services
             var jogador =  await _context.Jogadores.FindAsync(id);
             return jogador;
         }
-        public async Task<IEnumerable<Jogador>> BuscaTimeID(int id)
+        public async Task<IEnumerable<Jogador>> BuscaJogadoresPorTime(int id)
         {
             return await _context.Jogadores.Where(_ => string.Equals(Convert.ToString(_.TimeID), Convert.ToString(id), StringComparison.OrdinalIgnoreCase)).ToListAsync();
         }

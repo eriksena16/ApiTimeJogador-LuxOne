@@ -9,7 +9,7 @@ namespace ApiTimeJogador_LuxOne.Iterfaces
     public interface IJogadoresService
     {
         Task<IEnumerable<Jogador>> Get();
-        Task<IEnumerable<Jogador>> BuscaTimeID(int id);
+        Task<IEnumerable<Jogador>> BuscaJogadoresPorTime(int id);
         Task<IEnumerable<Jogador>> BuscaPorIdade(int idade);
         Task<Jogador> Salvar(Jogador jogador);
     }
