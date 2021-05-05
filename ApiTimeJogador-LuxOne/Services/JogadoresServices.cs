@@ -23,7 +23,7 @@ namespace ApiTimeJogador_LuxOne.Services
 
         public async Task<Jogador> GetID(int id)
         {
-            var jogador = await _context.Jogadores.FindAsync(id);
+            var jogador =  _context.Jogadores.Where(_ => int.Equals(Convert.ToInt32(_.TimeID), StringComparison.OrdinalIgnoreCase));
             return jogador;
         }
 
