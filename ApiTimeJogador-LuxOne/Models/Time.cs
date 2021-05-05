@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using ApiTimeJogador_LuxOne.Iterfaces;
-using ApiTimeJogador_LuxOne.Services;
-using Newtonsoft.Json;
 
 namespace ApiTimeJogador_LuxOne.Models
 {
@@ -18,6 +16,7 @@ namespace ApiTimeJogador_LuxOne.Models
         public DateTime DataInclusao { get; set; }
 
         [JsonIgnore]
+        [NotMapped]
         public double Media { get; set; }
 
         [JsonIgnore]

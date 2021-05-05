@@ -20,7 +20,6 @@ namespace ApiTimeJogador_LuxOne.Controllers
             _jogadoresService = jogadoresService;
         }
 
-        // GET: api/Jogadores
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Jogador>>> Get()
         {
@@ -28,21 +27,34 @@ namespace ApiTimeJogador_LuxOne.Controllers
             return Ok(jogadores);
         }
 
-        // GET: api/Jogadores/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Jogador>> GetID(int id)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Jogador>>> BuscarTimeID( int id)
         {
-            var jogador = await _jogadoresService.GetID(id);
+            var jogador = await _jogadoresService.BuscaTimeID(id);
 
             if (jogador == null)
             {
                 return NotFound();
             }
 
-            return jogador;
+            return Ok(jogador);
         }
 
-  
+       
+        [HttpGet]
+        public async Task<ActionResult<Jogador>> BuscaPorIdade(int idade)
+        {
+            var jogador = await _jogadoresService.BuscaPorIdade(idade);
+
+            if (jogador == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(jogador);
+
+        }
+
         [HttpPost]
         public async Task<ActionResult<Jogador>> Salvar(Jogador jogador)
         {

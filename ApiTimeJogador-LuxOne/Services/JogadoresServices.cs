@@ -23,17 +23,19 @@ namespace ApiTimeJogador_LuxOne.Services
 
         public async Task<Jogador> GetID(int id)
         {
-            var jogador =  _context.Jogadores.Where(_ => int.Equals(Convert.ToInt32(_.TimeID), StringComparison.OrdinalIgnoreCase));
+            var jogador =  await _context.Jogadores.FindAsync(id);
             return jogador;
         }
+        public async Task<IEnumerable<Jogador>> BuscaTimeID(int id)
+        {
+            return await _context.Jogadores.Where(_ => string.Equals(Convert.ToString(_.TimeID), Convert.ToString(id), StringComparison.OrdinalIgnoreCase)).ToListAsync();
+        }
 
-        /*public async Task<Jogador> GetIdade(int idade)
+        public async Task<IEnumerable<Jogador>> BuscaPorIdade(int idade)
         {
 
-            var jogador =from j in _context.Jogadores where j.Idade == idade select j;
-            
-            return  jogador;
-        }*/
+            return  await _context.Jogadores.Where(_ => string.Equals(Convert.ToString( _.Idade), Convert.ToString(idade), StringComparison.OrdinalIgnoreCase)).ToListAsync();
+        }
 
         public async Task<Jogador> Salvar(Jogador jogador)
         {
