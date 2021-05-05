@@ -10,6 +10,7 @@ using ApiTimeJogador_LuxOne.Models;
 using ApiTimeJogador_LuxOne.Models.Validacao;
 using FluentValidation;
 using ApiTimeJogador_LuxOne.Iterfaces;
+using ApiTimeJogador_LuxOne.Models.DTO;
 
 namespace ApiTimeJogador_LuxOne.Controllers
 {
@@ -28,43 +29,21 @@ namespace ApiTimeJogador_LuxOne.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Time>>> Get()
+        public async Task<List<TimeDTO>> Get()
         {
          var times =  await _timesService.Get();
-            return Ok(times);
+            return times;
            
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Time>> GetID(int id)
-        {
-            var time = await _timesService.GetID(id);
-            
-
-            if (time == null)
-            {
-                return NotFound();
-            }
-
-            return time;
         }
 
 
         [HttpPost]
-        public async Task<ActionResult<Time>> Salvar(Time time)
+        public async Task<ActionResult<Time>> Salvar(TimeDTO time)
         {
             validator.ValidateAndThrow(time);
            await _timesService.Salvar(time);
 
             return CreatedAtAction("Get", new { id = time.TimeID }, time);
         }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<double>> CalcularMediaIdade(int id)
-        {
-            var media = await _timesService.CalcularMediaIdade(id);
-            return Ok(media) ;
-        }
-
     }
 }

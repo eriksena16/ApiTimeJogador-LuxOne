@@ -62,7 +62,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
             await _jogadoresService.Salvar(jogador);
             
 
-            return CreatedAtRoute("DefaultApi", new { id = jogador.JogadorID }, jogador);
+            return CreatedAtAction("Get", new { id = jogador.JogadorID }, jogador);
         }
 
     }

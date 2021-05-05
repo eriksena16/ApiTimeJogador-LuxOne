@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApiTimeJogador_LuxOne.Models;
+using ApiTimeJogador_LuxOne.Models.DTO;
 
 namespace ApiTimeJogador_LuxOne.Iterfaces
 {
    public interface ITimesService
     {
-        Task<IEnumerable<Time>>Get();
-        Task<Time>GetID(int id);
+        Task<List<TimeDTO>>Get();
         Task<Time>Salvar(Time time);
-        Task<Double> CalcularMediaIdade(int id);
-
-
+        
     }
 }

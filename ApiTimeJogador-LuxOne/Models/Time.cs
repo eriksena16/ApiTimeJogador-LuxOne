@@ -16,10 +16,6 @@ namespace ApiTimeJogador_LuxOne.Models
         public DateTime DataInclusao { get; set; }
 
         [JsonIgnore]
-        [NotMapped]
-        public double Media { get; set; }
-
-        [JsonIgnore]
        public virtual ICollection<Jogador> Jogadores { get; set; }
     }
 }

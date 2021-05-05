@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApiTimeJogador_LuxOne.Iterfaces;
+using ApiTimeJogador_LuxOne.Models.DTO;
 
 namespace ApiTimeJogador_LuxOne.Services
 {
@@ -17,9 +18,26 @@ namespace ApiTimeJogador_LuxOne.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Time>> Get()
+        public async Task<List<TimeDTO>> Get()
         {
-            return await _context.Times.ToListAsync();
+
+            var todosTimes = _context.Times.Include(_ => _.Jogadores);
+            List<TimeDTO> times = new List<TimeDTO>();
+
+            foreach (Time time in todosTimes)
+            {
+                var mediaIdade = time.Jogadores.Average(_ => _.Idade);
+                TimeDTO timeDTO = new TimeDTO();
+                timeDTO.TimeID = time.TimeID;
+                timeDTO.Nome = time.Nome;
+                timeDTO.DataInclusao = time.DataInclusao;
+                timeDTO.Jogadores = time.Jogadores;
+                timeDTO.MediaIdadeJogadores = mediaIdade;
+                times.Add(timeDTO);
+            }
+
+            return times;
+
         }
 
         public async Task<Time> GetID( int id)
@@ -37,14 +55,6 @@ namespace ApiTimeJogador_LuxOne.Services
             
         }
 
-        public async Task<double>CalcularMediaIdade(int id)
-        {
-
-            var time = await GetID(id);
-            var mediaIdade = time.Jogadores.Average(_ => _.Idade);
-            return mediaIdade;
-            
-        }
 
          private bool TimeExists(int id)
         {
