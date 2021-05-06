@@ -1,5 +1,6 @@
 ﻿using ApiTimeJogador_LuxOne.Iterfaces;
 using ApiTimeJogador_LuxOne.Models;
+using ApiTimeJogador_LuxOne.Models.DTQ;
 using ApiTimeJogador_LuxOne.Models.Validacao;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -56,12 +57,11 @@ namespace ApiTimeJogador_LuxOne.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Jogador>> Salvar(Jogador jogador)
+        public async Task<ActionResult<Jogador>> Salvar(JogadorSalvarDTQ jogadorSalvarQuery)
         {
-            validator.ValidateAndThrow(jogador);
-            await _jogadoresService.Salvar(jogador);
-            
-
+            validator.ValidateAndThrow(jogadorSalvarQuery);
+            Jogador jogador = await _jogadoresService.Salvar(jogadorSalvarQuery);
+          
             return CreatedAtAction("Get", new { id = jogador.JogadorID }, jogador);
         }
 
