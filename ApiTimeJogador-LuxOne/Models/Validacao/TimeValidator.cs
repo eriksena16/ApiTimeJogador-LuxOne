@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
 using ApiTimeJogador_LuxOne.Models;
+using ApiTimeJogador_LuxOne.Models.DTQ;
 
 namespace ApiTimeJogador_LuxOne.Models.Validacao
 {
-    public class TimeValidator : AbstractValidator<Time>
+    public class TimeValidator : AbstractValidator<TimeSalvarDTQ>
     {
         public TimeValidator()
         {

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiTimeJogador_LuxOne.Models.DTQ;
 using FluentValidation;
 
 namespace ApiTimeJogador_LuxOne.Models.Validacao
 {
-    public class JogadorValidator : AbstractValidator<Jogador>
+    public class JogadorValidator : AbstractValidator<JogadorSalvarDTQ>
     {
         public JogadorValidator()
         {
