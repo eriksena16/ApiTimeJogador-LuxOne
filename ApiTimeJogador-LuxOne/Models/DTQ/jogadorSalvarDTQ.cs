@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ApiTimeJogador_LuxOne.Models.DTQ
+﻿namespace ApiTimeJogador_LuxOne.Models.DTQ
 {
     public class JogadorSalvarDTQ
     {
