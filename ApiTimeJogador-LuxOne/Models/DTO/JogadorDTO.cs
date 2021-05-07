@@ -15,5 +15,7 @@ namespace ApiTimeJogador_LuxOne.Models.DTO
 
         public int TimeID { get; set; }
 
+      
+
     }
 }
