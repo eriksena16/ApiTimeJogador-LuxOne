@@ -7,6 +7,7 @@ using ApiTimeJogador_LuxOne.Data;
 using Microsoft.EntityFrameworkCore;
 using ApiTimeJogador_LuxOne.Iterfaces;
 using ApiTimeJogador_LuxOne.Models.DTQ;
+using ApiTimeJogador_LuxOne.Models.DTO;
 
 namespace ApiTimeJogador_LuxOne.Services
 {
@@ -14,7 +15,23 @@ namespace ApiTimeJogador_LuxOne.Services
     {
         private readonly APIcontext _context;
         public JogadoresServices(APIcontext context) => _context = context;
-        public async Task<IEnumerable<Jogador>> Get() => await _context.Jogadores.ToListAsync();
+        public async Task<List<JogadorDTO>> Get()
+        {
+
+         var todosJogadores =   _context.Jogadores.Include(_ => _.Time);
+            List<JogadorDTO> jogadores = new List<JogadorDTO>();
+            foreach (Jogador jogador in todosJogadores)
+            {
+                JogadorDTO jogadorDTO = new JogadorDTO();
+                jogadorDTO.JogadorID = jogador.JogadorID;
+                jogadorDTO.NomeCompleto = jogador.NomeCompleto;
+                jogadorDTO.Idade = jogador.Idade;
+                jogadorDTO.TimeID = jogador.TimeID;
+                jogadores.Add(jogadorDTO);
+            }
+
+            return jogadores;
+        }
 
         public async Task<Jogador> GetID(int id)
         {

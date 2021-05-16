@@ -14,5 +14,7 @@ namespace LuxOne.Model.DTO
 
         public int TimeID { get; set; }
 
+      
+
     }
 }
