@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace ApiTimeJogador_LuxOne.Models.DTO
+namespace LuxOne.Model.DTO
 {
     public class JogadorDTO
     {

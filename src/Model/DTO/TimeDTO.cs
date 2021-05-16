@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace ApiTimeJogador_LuxOne.Models.DTO
-
+namespace LuxOne.Model.DTO
 {
     public class TimeDTO
     {
@@ -15,6 +15,6 @@ namespace ApiTimeJogador_LuxOne.Models.DTO
         public DateTime DataInclusao { get; set; }
 
         public double? MediaIdadeJogadores { get; set; }
-        public  ICollection<JogadorDTO> Jogadores { get; set; }
+        public ICollection<JogadorDTO> Jogadores { get; set; }
     }
 }

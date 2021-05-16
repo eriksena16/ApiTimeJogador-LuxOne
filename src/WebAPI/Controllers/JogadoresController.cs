@@ -29,7 +29,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Jogador>>> BuscarTimeID( int id)
+        public async Task<ActionResult<IEnumerable<Jogador>>> BuscarTimeID([FromQuery] int id)
         {
             var jogador = await _jogadoresService.BuscaJogadoresPorTime(id);
 
