@@ -1,13 +1,13 @@
-﻿using ApiTimeJogador_LuxOne.Models;
+﻿using ApiTimeJogador_LuxOne.Data;
+using ApiTimeJogador_LuxOne.Iterfaces;
+using ApiTimeJogador_LuxOne.Models;
+using ApiTimeJogador_LuxOne.Models.DTQ;
+using LuxOne.Model.DTO;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ApiTimeJogador_LuxOne.Data;
-using Microsoft.EntityFrameworkCore;
-using ApiTimeJogador_LuxOne.Iterfaces;
-using ApiTimeJogador_LuxOne.Models.DTQ;
-using ApiTimeJogador_LuxOne.Models.DTO;
 
 namespace ApiTimeJogador_LuxOne.Services
 {
