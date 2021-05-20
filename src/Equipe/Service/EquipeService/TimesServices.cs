@@ -1,19 +1,17 @@
-﻿using ApiTimeJogador_LuxOne.Data;
-using ApiTimeJogador_LuxOne.Iterfaces;
-using ApiTimeJogador_LuxOne.Models;
-using ApiTimeJogador_LuxOne.Models.DTQ;
+﻿using LuxOne.Contrato.EquipeContrato;
 using LuxOne.Model.DTO;
+using LuxOne.Repository.EquipeRepositoryMemory;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiTimeJogador_LuxOne.Services
+namespace LuxOne.Service.EquipeService
 {
-    public class TimesServices : ITimesService
+    public class TimesServices : ITimeService
     {
-        private readonly APIcontext _context;
-        public TimesServices(APIcontext context) => _context = context;
+        private readonly DbMemoryContext _context;
+        public TimesServices(DbMemoryContext context) => _context = context;
 
         public async Task<List<TimeDTO>> Get()
         {

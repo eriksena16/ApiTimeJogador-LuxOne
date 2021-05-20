@@ -1,13 +1,13 @@
+using LuxOne.Contrato.EquipeContrato;
+using LuxOne.Repository.EquipeRepositoryMemory;
+using LuxOne.Service.EquipeService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
-using ApiTimeJogador_LuxOne.Data;
-using ApiTimeJogador_LuxOne.Services;
-using ApiTimeJogador_LuxOne.Iterfaces;
 
 namespace ApiTimeJogador_LuxOne
 {
@@ -23,9 +23,9 @@ namespace ApiTimeJogador_LuxOne
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ITimesService,TimesServices >();
+            services.AddScoped<ITimeService,TimesServices >();
             services.AddScoped<IJogadoresService, JogadoresServices>();
-            services.AddDbContext<APIcontext>(opt => opt.UseInMemoryDatabase("TimeJogador"));
+            services.AddDbContext<DbMemoryContext>(opt => opt.UseInMemoryDatabase("TimeJogador"));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

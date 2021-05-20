@@ -1,4 +1,4 @@
-﻿namespace ApiTimeJogador_LuxOne.Models.DTQ
+﻿namespace LuxOne.Model.DTO
 {
     public class JogadorSalvarDTQ
     {

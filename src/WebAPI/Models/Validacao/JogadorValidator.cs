@@ -1,5 +1,5 @@
-﻿using ApiTimeJogador_LuxOne.Models.DTQ;
-using FluentValidation;
+﻿using FluentValidation;
+using LuxOne.Model.DTO;
 
 namespace ApiTimeJogador_LuxOne.Models.Validacao
 {

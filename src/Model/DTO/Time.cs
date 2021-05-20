@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ApiTimeJogador_LuxOne.Models
+namespace LuxOne.Model.DTO
 {
     public class Time
     {

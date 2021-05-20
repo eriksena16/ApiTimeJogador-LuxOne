@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FluentValidation;
-using ApiTimeJogador_LuxOne.Models;
-using ApiTimeJogador_LuxOne.Models.DTQ;
+﻿using FluentValidation;
+using LuxOne.Model.DTO;
 
 namespace ApiTimeJogador_LuxOne.Models.Validacao
 {

@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Contrato\Service\EquipeContrato\EquipeContrato.csproj" />
+    <ProjectReference Include="..\Equipe\Repository\EquipeRepositoryMemory\EquipeRepositoryMemory.csproj" />
+    <ProjectReference Include="..\Equipe\Service\EquipeService\EquipeService.csproj" />
     <ProjectReference Include="..\Model\DTO\DTO.csproj" />
   </ItemGroup>
 

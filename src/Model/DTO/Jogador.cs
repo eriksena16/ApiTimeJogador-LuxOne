@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace ApiTimeJogador_LuxOne.Models
+namespace LuxOne.Model.DTO
 {
     public class Jogador
     {

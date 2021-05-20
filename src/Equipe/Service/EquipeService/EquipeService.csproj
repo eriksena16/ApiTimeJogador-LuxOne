@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>LuxOne.Service.EquipeService</AssemblyName>
+    <RootNamespace>LuxOne.Service.EquipeService</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Contrato\Service\EquipeContrato\EquipeContrato.csproj" />
+    <ProjectReference Include="..\..\..\Model\DTO\DTO.csproj" />
+    <ProjectReference Include="..\..\Repository\EquipeRepositoryMemory\EquipeRepositoryMemory.csproj" />
+  </ItemGroup>
+
+</Project>

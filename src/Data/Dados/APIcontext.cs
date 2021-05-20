@@ -1,9 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ApiTimeJogador_LuxOne.Models;
+﻿using LuxOne.Model.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiTimeJogador_LuxOne.Data
 {

@@ -1,8 +1,5 @@
-﻿using ApiTimeJogador_LuxOne.Iterfaces;
-using ApiTimeJogador_LuxOne.Models;
-using ApiTimeJogador_LuxOne.Models.DTQ;
-using ApiTimeJogador_LuxOne.Models.Validacao;
-using FluentValidation;
+﻿using ApiTimeJogador_LuxOne.Models.Validacao;
+using LuxOne.Contrato.EquipeContrato;
 using LuxOne.Model.DTO;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -28,7 +25,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.NoContent)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(List<JogadorDTO>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Jogador>>> Get()
+        public async Task<ActionResult> Get()
         {
             List<JogadorDTO> jogadores = await _jogadoresService.Get();
             return Ok(jogadores);
@@ -39,9 +36,15 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.NoContent)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(List<Jogador>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Jogador>>> BuscarTimeID([FromQuery] int id)
+        public async Task<ActionResult> BuscarTimeID([FromQuery] int? id)
         {
-            IEnumerable<Jogador> jogador = await _jogadoresService.BuscaJogadoresPorTime(id);
+            if (id is null)
+                return BadRequest(id);
+
+            if(id.HasValue)
+                return BadRequest(id);
+
+            IEnumerable<Jogador> jogador = await _jogadoresService.BuscaJogadoresPorTime(id.Value);
 
             if (jogador == null)
             {
@@ -51,13 +54,13 @@ namespace ApiTimeJogador_LuxOne.Controllers
             return Ok(jogador);
         }
 
-       
+
         [HttpGet]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.NoContent)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(List<Jogador>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Jogador>> BuscaPorIdade(int idade)
+        public async Task<ActionResult> BuscaPorIdade(int idade)
         {
             IEnumerable<Jogador> jogador = await _jogadoresService.BuscaPorIdade(idade);
 
@@ -75,14 +78,14 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.NoContent)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(List<Jogador>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Jogador>> Salvar(JogadorSalvarDTQ jogadorSalvarQuery)
+        public async Task<ActionResult> Salvar(JogadorSalvarDTQ jogadorSalvarQuery)
         {
             if (jogadorSalvarQuery is null)
                 return BadRequest(jogadorSalvarQuery);
 
-            validator.ValidateAndThrow(jogadorSalvarQuery);
+            //validator.ValidateAndThrow(jogadorSalvarQuery);
             Jogador jogador = await _jogadoresService.Salvar(jogadorSalvarQuery);
-          
+
             return CreatedAtAction("Get", new { id = jogador.JogadorID }, jogador);
         }
 

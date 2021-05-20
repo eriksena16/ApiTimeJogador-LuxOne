@@ -1,8 +1,5 @@
-﻿using ApiTimeJogador_LuxOne.Iterfaces;
-using ApiTimeJogador_LuxOne.Models;
-using ApiTimeJogador_LuxOne.Models.DTQ;
-using ApiTimeJogador_LuxOne.Models.Validacao;
-using FluentValidation;
+﻿using ApiTimeJogador_LuxOne.Models.Validacao;
+using LuxOne.Contrato.EquipeContrato;
 using LuxOne.Model.DTO;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -14,11 +11,11 @@ namespace ApiTimeJogador_LuxOne.Controllers
     [Route("/api/[controller]/[action]")]
     public class TimesController : ControllerBase
     {
-        private readonly ITimesService _timesService;
+        private readonly ITimeService _timesService;
 
         private readonly TimeValidator validator = new TimeValidator();
 
-        public TimesController(ITimesService timesService)
+        public TimesController(ITimeService timesService)
         {
 
             _timesService = timesService;
@@ -51,7 +48,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
                 //bad 12-05
                 return BadRequest(timeSalvarQuery);
 
-            validator.ValidateAndThrow(timeSalvarQuery);
+          //  validator.ValidateAndThrow(timeSalvarQuery);
 
             Time time = await _timesService.Salvar(timeSalvarQuery);
 

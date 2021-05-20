@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ApiTimeJogador_LuxOne.Models.DTQ
+namespace LuxOne.Model.DTO
 {
     public class TimeSalvarDTQ
     {

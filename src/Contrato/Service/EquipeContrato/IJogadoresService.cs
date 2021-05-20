@@ -1,10 +1,8 @@
-﻿using ApiTimeJogador_LuxOne.Models;
-using ApiTimeJogador_LuxOne.Models.DTQ;
-using LuxOne.Model.DTO;
+﻿using LuxOne.Model.DTO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ApiTimeJogador_LuxOne.Iterfaces
+namespace LuxOne.Contrato.EquipeContrato
 {
     public interface IJogadoresService
     {
