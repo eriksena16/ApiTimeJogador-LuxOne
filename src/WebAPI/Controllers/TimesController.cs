@@ -1,4 +1,5 @@
-﻿using ApiTimeJogador_LuxOne.Models.Validacao;
+﻿using ApiTimeJogador_LuxOne.Code;
+using ApiTimeJogador_LuxOne.Models.Validacao;
 using LuxOne.Contrato.EquipeContrato;
 using LuxOne.Model.DTO;
 using Microsoft.AspNetCore.Mvc;
@@ -9,19 +10,17 @@ using System.Threading.Tasks;
 namespace ApiTimeJogador_LuxOne.Controllers
 {
     [Route("/api/[controller]/[action]")]
-    public class TimesController : ControllerBase
+    public class TimesController : ApplicationController
     {
-        private readonly ITimeService _timesService;
+        //private readonly ITimeService _timesService;
 
-        private readonly TimeValidator validator = new TimeValidator();
+        /* public TimesController(ITimeService timesService)
+         {
 
-        public TimesController(ITimeService timesService)
-        {
+             _timesService = timesService;
+         }*/
 
-            _timesService = timesService;
-        }
 
-       
         [HttpGet]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.NoContent)]
@@ -29,7 +28,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [ProducesResponseType(typeof(List<TimeDTO>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Get()
         {
-            List<TimeDTO> times = await _timesService.Get();
+            List<TimeDTO> times = await this.GatewayServiceProvider.Get<ITimeService>().Get();
             if (times.Count == 0)
                 return NoContent();
 
@@ -48,9 +47,10 @@ namespace ApiTimeJogador_LuxOne.Controllers
                 //bad 12-05
                 return BadRequest(timeSalvarQuery);
 
-          //  validator.ValidateAndThrow(timeSalvarQuery);
+            //  validator.ValidateAndThrow(timeSalvarQuery);
 
-            Time time = await _timesService.Salvar(timeSalvarQuery);
+            Time time = await this.GatewayServiceProvider.Get<ITimeService>().Salvar(timeSalvarQuery);
+
 
             return CreatedAtAction("Get", new { id = time.TimeID }, time);
         }
