@@ -1,4 +1,4 @@
-﻿using ApiTimeJogador_LuxOne.Models.Validacao;
+﻿using ApiTimeJogador_LuxOne.Code;
 using LuxOne.Contrato.EquipeContrato;
 using LuxOne.Model.DTO;
 using Microsoft.AspNetCore.Mvc;
@@ -10,15 +10,8 @@ namespace ApiTimeJogador_LuxOne.Controllers
 {
     [Route("/api/[controller]/[action]")]
     [ApiController]
-    public class JogadoresController : ControllerBase
+    public class JogadoresController : ApplicationController
     {
-        private readonly IJogadoresService _jogadoresService;
-        private readonly JogadorValidator validator = new JogadorValidator();
-
-        public JogadoresController(IJogadoresService jogadoresService)
-        {
-            _jogadoresService = jogadoresService;
-        }
 
         [HttpGet]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.BadRequest)]
@@ -27,7 +20,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [ProducesResponseType(typeof(List<JogadorDTO>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Get()
         {
-            List<JogadorDTO> jogadores = await _jogadoresService.Get();
+            List<JogadorDTO> jogadores = await this.GatewayServiceProvider.Get<IJogadoresService>().Get();
             return Ok(jogadores);
         }
 
@@ -44,7 +37,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
             if(id.HasValue)
                 return BadRequest(id);
 
-            IEnumerable<Jogador> jogador = await _jogadoresService.BuscaJogadoresPorTime(id.Value);
+            IEnumerable<Jogador> jogador = await this.GatewayServiceProvider.Get<IJogadoresService>().BuscaJogadoresPorTime(id.Value);
 
             if (jogador == null)
             {
@@ -62,7 +55,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [ProducesResponseType(typeof(List<Jogador>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> BuscaPorIdade(int idade)
         {
-            IEnumerable<Jogador> jogador = await _jogadoresService.BuscaPorIdade(idade);
+            IEnumerable<Jogador> jogador = await this.GatewayServiceProvider.Get<IJogadoresService>().BuscaPorIdade(idade);
 
             if (jogador == null)
             {
@@ -83,8 +76,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
             if (jogadorSalvarQuery is null)
                 return BadRequest(jogadorSalvarQuery);
 
-            //validator.ValidateAndThrow(jogadorSalvarQuery);
-            Jogador jogador = await _jogadoresService.Salvar(jogadorSalvarQuery);
+            Jogador jogador = await this.GatewayServiceProvider.Get<IJogadoresService>().Salvar(jogadorSalvarQuery);
 
             return CreatedAtAction("Get", new { id = jogador.JogadorID }, jogador);
         }
