@@ -1,7 +1,6 @@
 using LuxOne.Contrato.EquipeContrato;
 using LuxOne.Infrastructure.EquipeLocator;
 using LuxOne.Repository.EquipeRepositoryMemory;
-using LuxOne.Service.EquipeService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using LuxOne.Contrato.GatewayContract;
 
 namespace ApiTimeJogador_LuxOne
 {
@@ -26,7 +26,9 @@ namespace ApiTimeJogador_LuxOne
         {
             
             services.ConfigureEquipeService();
+            services.AddScoped<IGatewayServiceProvider, GatewayServiceProvider>();
             services.AddDbContext<DbMemoryContext>(opt => opt.UseInMemoryDatabase("TimeJogador"));
+            services.AddHttpContextAccessor();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

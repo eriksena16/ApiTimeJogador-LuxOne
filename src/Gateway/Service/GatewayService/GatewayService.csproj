@@ -2,17 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>LuxOne.Contrato.GatewayContract</AssemblyName>
-    <RootNamespace>LuxOne.Contrato.GatewayContract</RootNamespace>
+    <AssemblyName>LuxOne.Service.GatewayService</AssemblyName>
+    <RootNamespace>LuxOne.Service.GatewayService</RootNamespace>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Model\DTO\DTO.csproj" />
+    <ProjectReference Include="..\..\..\Contrato\Service\GatewayContract\GatewayContract.csproj" />
   </ItemGroup>
-
 </Project>

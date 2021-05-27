@@ -6,4 +6,5 @@ namespace LuxOne.Contrato.GatewayContract
     {
         T Get<T>();
     }
+
 }
