@@ -24,6 +24,7 @@
     <ProjectReference Include="..\Contrato\Service\GatewayContract\GatewayContract.csproj" />
     <ProjectReference Include="..\Equipe\Infrastructure\EquipeLocator\EquipeLocator.csproj" />
     <ProjectReference Include="..\Equipe\Repository\EquipeRepositoryMemory\EquipeRepositoryMemory.csproj" />
+    <ProjectReference Include="..\Gateway\Service\GatewayService\GatewayService.csproj" />
     <ProjectReference Include="..\Model\DTO\DTO.csproj" />
   </ItemGroup>
 

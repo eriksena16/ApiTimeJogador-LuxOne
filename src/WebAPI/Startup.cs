@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using LuxOne.Contrato.GatewayContract;
+using LuxOne.Service.GatewayService;
 
 namespace ApiTimeJogador_LuxOne
 {
