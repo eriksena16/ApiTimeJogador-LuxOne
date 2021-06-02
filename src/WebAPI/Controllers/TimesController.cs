@@ -1,7 +1,7 @@
 ﻿using ApiTimeJogador_LuxOne.Code;
-using ApiTimeJogador_LuxOne.Models.Validacao;
 using LuxOne.Contrato.EquipeContrato;
 using LuxOne.Model.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net;
@@ -10,16 +10,9 @@ using System.Threading.Tasks;
 namespace ApiTimeJogador_LuxOne.Controllers
 {
     [Route("/api/[controller]/[action]")]
+    [Authorize]
     public class TimesController : ApplicationController
     {
-        //private readonly ITimeService _timesService;
-
-        /* public TimesController(ITimeService timesService)
-         {
-
-             _timesService = timesService;
-         }*/
-
 
         [HttpGet]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.BadRequest)]
@@ -38,6 +31,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
 
 
         [HttpPost]
+        //[Authorize]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(Time), (int)HttpStatusCode.OK)]

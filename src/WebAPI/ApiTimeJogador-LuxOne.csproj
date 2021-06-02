@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="10.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
@@ -26,6 +27,8 @@
     <ProjectReference Include="..\Equipe\Repository\EquipeRepositoryMemory\EquipeRepositoryMemory.csproj" />
     <ProjectReference Include="..\Gateway\Infrastructure\GatewayLocator\GatewayLocator.csproj" />
     <ProjectReference Include="..\Gateway\Service\GatewayService\GatewayService.csproj" />
+    <ProjectReference Include="..\Infrastructure\Contract\InfrastructureContract\InfrastructureContract.csproj" />
+    <ProjectReference Include="..\Infrastructure\Security\JwtAuthorization\JwtAuthorization.csproj" />
     <ProjectReference Include="..\Model\DTO\DTO.csproj" />
   </ItemGroup>
 
