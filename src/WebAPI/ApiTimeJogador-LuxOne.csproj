@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -28,7 +28,9 @@
     <ProjectReference Include="..\Gateway\Infrastructure\GatewayLocator\GatewayLocator.csproj" />
     <ProjectReference Include="..\Gateway\Service\GatewayService\GatewayService.csproj" />
     <ProjectReference Include="..\Infrastructure\Contract\InfrastructureContract\InfrastructureContract.csproj" />
+    <ProjectReference Include="..\Infrastructure\Security\Extension\ExtensionSecurity\ExtensionSecurity.csproj" />
     <ProjectReference Include="..\Infrastructure\Security\JwtAuthorization\JwtAuthorization.csproj" />
+    <ProjectReference Include="..\Infrastructure\Security\JwtLocator\JwtLocator.csproj" />
     <ProjectReference Include="..\Model\DTO\DTO.csproj" />
   </ItemGroup>
 

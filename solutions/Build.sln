@@ -47,11 +47,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{94BFAFBB-1C57-4D90-97D6-FBD68AF05B92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthorization", "..\src\Infrastructure\Security\JwtAuthorization\JwtAuthorization.csproj", "{F34B1CD5-56F9-4EB4-821C-8FFBFD1A7699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtAuthorization", "..\src\Infrastructure\Security\JwtAuthorization\JwtAuthorization.csproj", "{F34B1CD5-56F9-4EB4-821C-8FFBFD1A7699}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contract", "Contract", "{C78A61A8-492A-4A1B-9DE8-255F3F9472DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfrastructureContract", "..\src\Infrastructure\Contract\InfrastructureContract\InfrastructureContract.csproj", "{5160616D-ACDF-4DD2-A2DF-02BFE426730E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfrastructureContract", "..\src\Infrastructure\Contract\InfrastructureContract\InfrastructureContract.csproj", "{5160616D-ACDF-4DD2-A2DF-02BFE426730E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtLocator", "..\src\Infrastructure\Security\JwtLocator\JwtLocator.csproj", "{0777B0F5-BA94-47CE-A963-C70D653A09BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionSecurity", "..\src\Infrastructure\Security\Extension\ExtensionSecurity\ExtensionSecurity.csproj", "{7F71794F-5D4C-4508-A021-29B893F34DE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +107,14 @@ Global
 		{5160616D-ACDF-4DD2-A2DF-02BFE426730E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5160616D-ACDF-4DD2-A2DF-02BFE426730E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5160616D-ACDF-4DD2-A2DF-02BFE426730E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0777B0F5-BA94-47CE-A963-C70D653A09BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0777B0F5-BA94-47CE-A963-C70D653A09BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0777B0F5-BA94-47CE-A963-C70D653A09BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0777B0F5-BA94-47CE-A963-C70D653A09BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F71794F-5D4C-4508-A021-29B893F34DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F71794F-5D4C-4508-A021-29B893F34DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F71794F-5D4C-4508-A021-29B893F34DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F71794F-5D4C-4508-A021-29B893F34DE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,6 +139,8 @@ Global
 		{F34B1CD5-56F9-4EB4-821C-8FFBFD1A7699} = {94BFAFBB-1C57-4D90-97D6-FBD68AF05B92}
 		{C78A61A8-492A-4A1B-9DE8-255F3F9472DE} = {F9C35FC5-2DBC-4EE7-A72D-91FBFF5D464D}
 		{5160616D-ACDF-4DD2-A2DF-02BFE426730E} = {C78A61A8-492A-4A1B-9DE8-255F3F9472DE}
+		{0777B0F5-BA94-47CE-A963-C70D653A09BF} = {94BFAFBB-1C57-4D90-97D6-FBD68AF05B92}
+		{7F71794F-5D4C-4508-A021-29B893F34DE2} = {94BFAFBB-1C57-4D90-97D6-FBD68AF05B92}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A057247F-C334-417E-AE64-29CAF6D55588}
