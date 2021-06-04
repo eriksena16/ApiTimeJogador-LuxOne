@@ -28,13 +28,13 @@ namespace LuxOne.Service.EquipeService
                 jogadores.Add(jogadorDTO);
             }
 
-            return jogadores;
+            return await Task.FromResult(jogadores);
         }
 
         public async Task<Jogador> GetID(int id)
         {
             var jogador =  await _context.Jogadores.FindAsync(id);
-            return jogador;
+            return await Task.FromResult(jogador);
         }
         public async Task<IEnumerable<Jogador>> BuscaJogadoresPorTime(int id) => await _context.Jogadores.Where(_ => string.Equals(Convert.ToString(_.TimeID), Convert.ToString(id), StringComparison.OrdinalIgnoreCase)).ToListAsync();
 

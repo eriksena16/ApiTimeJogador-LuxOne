@@ -48,14 +48,14 @@ namespace LuxOne.Service.EquipeService
                 times.Add(timeDTO);
             }
 
-            return times;
+            return await Task.FromResult(times);
 
         }
 
         public async Task<Time> GetID(int id)
         {
             var time = _context.Times.Include(_ => _.Jogadores).FirstOrDefault(_ => _.TimeID == id);
-            return time;
+            return await Task.FromResult(time);
         }
 
         public async Task<Time> Salvar(TimeSalvarDTQ timeSalvarQuery)
