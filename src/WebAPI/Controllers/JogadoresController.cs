@@ -1,6 +1,7 @@
 ﻿using ApiTimeJogador_LuxOne.Code;
 using LuxOne.Contrato.EquipeContrato;
 using LuxOne.Model.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace ApiTimeJogador_LuxOne.Controllers
 {
     [Route("/api/[controller]/[action]")]
-    [ApiController]
+    [Authorize]
     public class JogadoresController : ApplicationController
     {
 

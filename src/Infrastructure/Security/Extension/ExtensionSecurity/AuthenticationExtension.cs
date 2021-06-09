@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -7,8 +8,13 @@ namespace LuxOne.Infrastructure.Security.Extension.ExtensionSecurity
 {
     public static class AuthenticationExtension
     {
-        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services)
+        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
+            /*services.PostConfigure<BearerSecurityKey>(options =>
+            {
+                options.JwtSecurityKey = configuration[nameof(options.JwtSecurityKey)];
+            });*/
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -21,7 +27,9 @@ namespace LuxOne.Infrastructure.Security.Extension.ExtensionSecurity
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("ab197302-a31d-4ab9-a8c4-83a7a7c7928b")),
+                        //IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration[nameof(BearerSecurityKey.JwtSecurityKey)])),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration[$"{nameof(BearerSecurityKey)}:{nameof(BearerSecurityKey.JwtSecurityKey)}"])),
+                        //IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration["BearerSecurityKey:JwtSecurityKey"])),
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };

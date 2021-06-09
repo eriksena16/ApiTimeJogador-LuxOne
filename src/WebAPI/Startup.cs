@@ -29,7 +29,10 @@ namespace ApiTimeJogador_LuxOne
             services.ConfigureEquipeService();
             services.ConfigureGatewayService();
             services.CofigureJwtService();
-            services.AddJwtAuthentication();
+            //services.Configure<BearerSecurityKey>(Configuration.GetSection("BearerSecurityKey"));
+            services.Configure<BearerSecurityKey>(Configuration.GetSection(nameof(BearerSecurityKey)));
+            services.AddJwtAuthentication(Configuration);
+            services.AddJwtAuthorization();
             services.AddDbContext<DbMemoryContext>(opt => opt.UseInMemoryDatabase("TimeJogador"));
             services.AddHttpContextAccessor();
             services.AddControllers();
@@ -37,12 +40,7 @@ namespace ApiTimeJogador_LuxOne
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiTimeJogador_LuxOne", Version = "v1" });
             });
-            /* services.PostConfigure<BearerSecurityKey>(options =>
-             {
-                 options.JwtSecurityKey = configuration[nameof(options.JwtSecurityKey)];
-             });*/
-
-            services.AddAuthorization();
+                        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

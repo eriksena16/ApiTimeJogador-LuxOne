@@ -1,6 +1,7 @@
 ﻿using ApiTimeJogador_LuxOne.Code;
 using LuxOne.Contrato.EquipeContrato;
 using LuxOne.Model.DTO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace ApiTimeJogador_LuxOne.Controllers
 {
     [Route("/api/[controller]/[action]")]
-    [Authorize]
+    [Authorize(Roles ="Admin,Manager")]
     public class TimesController : ApplicationController
     {
 
@@ -21,6 +22,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [ProducesResponseType(typeof(List<TimeDTO>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Get()
         {
+            var Name = User.Identity.Name;
             List<TimeDTO> times = await this.GatewayServiceProvider.Get<ITimeService>().Get();
             if (times.Count == 0)
                 return NoContent();
@@ -31,7 +33,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
 
 
         [HttpPost]
-        //[Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "TimeCadastro")]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(Time), (int)HttpStatusCode.OK)]
@@ -41,7 +43,6 @@ namespace ApiTimeJogador_LuxOne.Controllers
                 //bad 12-05
                 return BadRequest(timeSalvarQuery);
 
-            //  validator.ValidateAndThrow(timeSalvarQuery);
 
             Time time = await this.GatewayServiceProvider.Get<ITimeService>().Salvar(timeSalvarQuery);
 

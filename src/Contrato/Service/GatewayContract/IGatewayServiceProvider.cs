@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LuxOne.Contrato.GatewayContract
+﻿namespace LuxOne.Contrato.GatewayContract
 {
     public interface IGatewayServiceProvider
     {
