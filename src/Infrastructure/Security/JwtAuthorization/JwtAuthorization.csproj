@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Contract\Service\GatewayContract\GatewayContract.csproj" />
+    <ProjectReference Include="..\..\Configuration\Contract\ConfigurationContract\ConfigurationContract.csproj" />
     <ProjectReference Include="..\..\Contract\InfrastructureContract\InfrastructureContract.csproj" />
     <ProjectReference Include="..\Extension\ExtensionSecurity\ExtensionSecurity.csproj" />
   </ItemGroup>

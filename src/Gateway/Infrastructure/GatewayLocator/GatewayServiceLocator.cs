@@ -1,4 +1,4 @@
-﻿using LuxOne.Contrato.GatewayContract;
+﻿using LuxOne.Contract.GatewayContract;
 using LuxOne.Service.GatewayService;
 using Microsoft.Extensions.DependencyInjection;
 

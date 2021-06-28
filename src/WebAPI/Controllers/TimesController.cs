@@ -1,5 +1,5 @@
 ﻿using ApiTimeJogador_LuxOne.Code;
-using LuxOne.Contrato.EquipeContrato;
+using LuxOne.Contract.EquipeContrato;
 using LuxOne.Model.DTO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;

@@ -1,4 +1,4 @@
-﻿using LuxOne.Contrato.GatewayContract;
+﻿using LuxOne.Contract.GatewayContract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 

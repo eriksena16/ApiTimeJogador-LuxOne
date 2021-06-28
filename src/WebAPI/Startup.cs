@@ -29,6 +29,7 @@ namespace ApiTimeJogador_LuxOne
             services.ConfigureEquipeService();
             services.ConfigureGatewayService();
             services.CofigureJwtService();
+            services.AddInfrastructureServiceLocator();
             //services.Configure<BearerSecurityKey>(Configuration.GetSection("BearerSecurityKey"));
             services.Configure<BearerSecurityKey>(Configuration.GetSection(nameof(BearerSecurityKey)));
             services.AddJwtAuthentication(Configuration);
@@ -40,7 +41,8 @@ namespace ApiTimeJogador_LuxOne
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiTimeJogador_LuxOne", Version = "v1" });
             });
-                        
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +53,11 @@ namespace ApiTimeJogador_LuxOne
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiTimeJogador_LuxOne v1"));
+            }
+
+            if (env.IsProduction() || env.IsStaging() || env.IsEnvironment("Staging_2"))
+            {
+                app.UseExceptionHandler("/Error");
             }
 
             app.UseHttpsRedirection();

@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Contrato\Service\EquipeContrato\EquipeContrato.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Contract\Service\EquipeContrato\EquipeContrato.csproj" />
     <ProjectReference Include="..\..\..\Model\DTO\DTO.csproj" />
     <ProjectReference Include="..\..\Repository\EquipeRepositoryMemory\EquipeRepositoryMemory.csproj" />
   </ItemGroup>

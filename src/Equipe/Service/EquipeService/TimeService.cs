@@ -1,4 +1,4 @@
-﻿using LuxOne.Contrato.EquipeContrato;
+﻿using LuxOne.Contract.EquipeContrato;
 using LuxOne.Model.DTO;
 using LuxOne.Repository.EquipeRepositoryMemory;
 using Microsoft.EntityFrameworkCore;
@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace LuxOne.Service.EquipeService
 {
-    public class TimesServices : ITimeService
+    public class TimeService : ITimeService
     {
         private readonly DbMemoryContext _context;
-        public TimesServices(DbMemoryContext context) => _context = context;
+        public TimeService(DbMemoryContext context) => _context = context;
 
         public async Task<List<TimeDTO>> Get()
         {

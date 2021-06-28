@@ -1,4 +1,6 @@
-﻿using LuxOne.Infrastructure.Contract.InfrastructureContract.Security;
+﻿using LuxOne.Contract.GatewayContract;
+using LuxOne.Infrastructure.ConfigurationContract;
+using LuxOne.Infrastructure.Contract.InfrastructureContract.Security;
 using LuxOne.Infrastructure.Security.Extension.ExtensionSecurity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -13,13 +15,19 @@ namespace LuxOne.Infrastructure.Security.JwtAuthorization
     public class JwtAuthorizationService : IJwtAuthotizationService
     {
         private readonly BearerSecurityKey _bearerSecurityKey;
-        public JwtAuthorizationService(IOptionsMonitor<BearerSecurityKey> bearerSecurityKey)
+        private readonly IGatewayServiceProvider _gatewayServiceProvider;
+        public JwtAuthorizationService(IOptionsMonitor<BearerSecurityKey> bearerSecurityKey, IGatewayServiceProvider gatewayServiceProvider)
         {
             _bearerSecurityKey = bearerSecurityKey.CurrentValue;
+            _gatewayServiceProvider = gatewayServiceProvider;
         }
 
         public async Task<string> Generate()
         {
+            string Jwt = _gatewayServiceProvider.Get<IConfigurationServiceProvider>().Get<string>("BearerSecurityKey:JwtSecurityKey");
+            BearerSecurityKey bearerSecurity = _gatewayServiceProvider.Get<IConfigurationServiceProvider>().Get<BearerSecurityKey>("BearerSecurityKey");
+
+            
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_bearerSecurityKey.JwtSecurityKey);
             //var key = Encoding.ASCII.GetBytes("ab197302-a31d-4ab9-a8c4-83a7a7c7928b");

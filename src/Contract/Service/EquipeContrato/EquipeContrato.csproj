@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>LuxOne.Contrato.EquipeContrato</AssemblyName>
-    <RootNamespace>LuxOne.Contrato.EquipeContrato</RootNamespace>
+    <AssemblyName>LuxOne.Contract.EquipeContrato</AssemblyName>
+    <RootNamespace>LuxOne.Contract.EquipeContrato</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

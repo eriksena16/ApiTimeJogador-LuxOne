@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Contrato\Service\EquipeContrato\EquipeContrato.csproj" />
+    <ProjectReference Include="..\..\..\Contract\Service\EquipeContrato\EquipeContrato.csproj" />
     <ProjectReference Include="..\..\Service\EquipeService\EquipeService.csproj" />
   </ItemGroup>
 

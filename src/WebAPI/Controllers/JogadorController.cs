@@ -1,5 +1,5 @@
 ﻿using ApiTimeJogador_LuxOne.Code;
-using LuxOne.Contrato.EquipeContrato;
+using LuxOne.Contract.EquipeContrato;
 using LuxOne.Model.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
 {
     [Route("/api/[controller]/[action]")]
     [Authorize]
-    public class JogadoresController : ApplicationController
+    public class JogadorController : ApplicationController
     {
 
         [HttpGet]
@@ -21,7 +21,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [ProducesResponseType(typeof(List<JogadorDTO>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> Get()
         {
-            List<JogadorDTO> jogadores = await this.GatewayServiceProvider.Get<IJogadoresService>().Get();
+            List<JogadorDTO> jogadores = await this.GatewayServiceProvider.Get<IJogadorService>().Get();
             return Ok(jogadores);
         }
 
@@ -38,7 +38,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
             if(id.HasValue)
                 return BadRequest(id);
 
-            IEnumerable<Jogador> jogador = await this.GatewayServiceProvider.Get<IJogadoresService>().BuscaJogadoresPorTime(id.Value);
+            IEnumerable<Jogador> jogador = await this.GatewayServiceProvider.Get<IJogadorService>().BuscaJogadoresPorTime(id.Value);
 
             if (jogador == null)
             {
@@ -56,7 +56,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
         [ProducesResponseType(typeof(List<Jogador>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> BuscaPorIdade(int idade)
         {
-            IEnumerable<Jogador> jogador = await this.GatewayServiceProvider.Get<IJogadoresService>().BuscaPorIdade(idade);
+            IEnumerable<Jogador> jogador = await this.GatewayServiceProvider.Get<IJogadorService>().BuscaPorIdade(idade);
 
             if (jogador == null)
             {
@@ -77,7 +77,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
             if (jogadorSalvarQuery is null)
                 return BadRequest(jogadorSalvarQuery);
 
-            Jogador jogador = await this.GatewayServiceProvider.Get<IJogadoresService>().Salvar(jogadorSalvarQuery);
+            Jogador jogador = await this.GatewayServiceProvider.Get<IJogadorService>().Salvar(jogadorSalvarQuery);
 
             return CreatedAtAction("Get", new { id = jogador.JogadorID }, jogador);
         }

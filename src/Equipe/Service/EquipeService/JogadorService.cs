@@ -1,4 +1,4 @@
-﻿using LuxOne.Contrato.EquipeContrato;
+﻿using LuxOne.Contract.EquipeContrato;
 using LuxOne.Model.DTO;
 using LuxOne.Repository.EquipeRepositoryMemory;
 using Microsoft.EntityFrameworkCore;
@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace LuxOne.Service.EquipeService
 {
-    public class JogadoresServices : IJogadoresService
+    public class JogadorService : IJogadorService
     {
         private readonly DbMemoryContext _context;
-        public JogadoresServices(DbMemoryContext context) => _context = context;
+        public JogadorService(DbMemoryContext context) => _context = context;
         public async Task<List<JogadorDTO>> Get()
         {
 

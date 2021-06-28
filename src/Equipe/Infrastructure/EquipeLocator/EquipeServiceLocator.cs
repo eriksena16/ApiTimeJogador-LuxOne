@@ -1,4 +1,4 @@
-﻿using LuxOne.Contrato.EquipeContrato;
+﻿using LuxOne.Contract.EquipeContrato;
 using LuxOne.Service.EquipeService;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,8 +8,8 @@ namespace LuxOne.Infrastructure.EquipeLocator
     {
         public static void ConfigureEquipeService(this IServiceCollection services)
         {
-            services.AddScoped<ITimeService, TimesServices>();
-            services.AddScoped<IJogadoresService, JogadoresServices>();
+            services.AddScoped<ITimeService, TimeService>();
+            services.AddScoped<IJogadorService, JogadorService>();
 
         }
     }
