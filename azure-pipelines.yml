@@ -14,3 +14,4 @@ steps:
   inputs:
     command: 'build'
     projects: '**/*ApiTimeJogador-LuxOne.csproj'
+  displayName: Buikding the Project
