@@ -42,10 +42,12 @@ namespace LuxOne.Service.EquipeService
 
         public async Task<Jogador> Salvar(JogadorSalvarDTQ jogadorSalvarQuery)
         {
-            Jogador jogador = new Jogador();
-            jogador.NomeCompleto = jogadorSalvarQuery.NomeCompleto;
-            jogador.Idade = jogadorSalvarQuery.Idade;
-            jogador.TimeID = jogadorSalvarQuery.TimeID;
+            Jogador jogador = new Jogador
+            {
+                NomeCompleto = jogadorSalvarQuery.NomeCompleto,
+                Idade = jogadorSalvarQuery.Idade,
+                TimeID = jogadorSalvarQuery.TimeID
+            };
 
             _context.Jogadores.Add(jogador);
             await _context.SaveChangesAsync();

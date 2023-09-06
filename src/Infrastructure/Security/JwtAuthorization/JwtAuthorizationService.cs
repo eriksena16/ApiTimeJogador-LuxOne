@@ -38,6 +38,8 @@ namespace LuxOne.Infrastructure.Security.JwtAuthorization
                     new Claim(ClaimTypes.Name, "Erik Sena"),
                     new Claim(ClaimTypes.Role, "Manager"),
                     new Claim("Time", "Cadastro"),
+                    new Claim("lastAccountId", "67"),
+                    new Claim("id", "1525"),
                 }),
                 Expires = DateTime.UtcNow.AddHours(2), //tempo
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),

@@ -12,5 +12,6 @@ namespace LuxOne.Repository.EquipeRepositoryMemory
 
         public DbSet<Time> Times { get; set; }
         public DbSet<Jogador> Jogadores { get; set; }
+        //public DbSet<Usuario> Usuarios { get; set; }
     }
 }
