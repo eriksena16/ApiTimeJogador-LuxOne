@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ApiTimeJogador_LuxOne.Controllers
 {
     [Route("/api/[controller]/[action]")]
-    [Authorize]
+    //[Authorize]
     public class JogadorController : ApplicationController
     {
 
@@ -35,8 +35,8 @@ namespace ApiTimeJogador_LuxOne.Controllers
             if (id is null)
                 return BadRequest(id);
 
-            if(id.HasValue)
-                return BadRequest(id);
+            //if(id.HasValue)
+            //    return BadRequest(id);
 
             IEnumerable<Jogador> jogador = await this.GatewayServiceProvider.Get<IJogadorService>().BuscaJogadoresPorTime(id.Value);
 

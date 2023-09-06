@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ApiTimeJogador_LuxOne.Controllers
 {
     [Route("/api/[controller]/[action]")]
-    [Authorize(Roles ="Admin,Manager")]
+    //[Authorize(Roles = "Admin,Manager")]
     public class TimesController : ApplicationController
     {
 
@@ -33,7 +33,7 @@ namespace ApiTimeJogador_LuxOne.Controllers
 
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "TimeCadastro")]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "TimeCadastro")]
         [ProducesResponseType(typeof(int), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(Time), (int)HttpStatusCode.OK)]

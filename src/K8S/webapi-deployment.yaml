@@ -1,0 +1,37 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: webapi
+  labels:
+    app: webapi
+spec:
+  selector:
+    matchLabels:
+      app: webapi
+      tier: backend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: webapi
+        tier: backend
+    spec:
+      containers:
+      - name: webapi
+        image: timejogador/luxone:1.1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Never #Always
+        env:
+          - name: DomainConnectionString
+            value: "Data Source=host.docker.internal;Initial Catalog=DEV;Trusted_Connection=false;Persist Security Info=True;User ID=dev;Password=dev@12345"
+          - name: ASPNETCORE_ENVIRONMENT
+            value: "Development"
+          - name: RedisConnectionString
+            value: "10.1.0.144"
+          
+

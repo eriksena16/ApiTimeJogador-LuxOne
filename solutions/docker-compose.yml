@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+   timejogador:
+      image: timejogador/luxone:1.0
+      networks:
+        - backend
+      environment:
+        #- DomainConnectionString=
+        #- RedisConnectionString=redis
+        # - ASPNETCORE_ENVIRONMENT=Development
+      ports: 
+         - "5000:80"
+      #deploy:
+      #   replicas: 2
+      #depends_on:
+      #   - redis
+   #redis:
+   #   image: redis
+   #   hostname: redis
+   #   networks:
+   #     - backend
+   #   ports:
+   #     - "6379:6379"
+ 
+
+networks:
+  backend:
+
+ 
